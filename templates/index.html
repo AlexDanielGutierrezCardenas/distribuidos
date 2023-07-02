@@ -1,14 +1,27 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="{% static 'css/estilos1.css' %}">
 </head>
 <body>
-    <h1>Informacion</h1>
-    <h2><a href="{% url 'huespedes_index' %}">Huespedes</a></h2>
-    <h2><a href="{% url 'habitaciones_index' %}">Habitaciones</a></h2>
-    <h2><a href="{% url 'reserva_index' %}">reservas</a></h2>
+    <div class="container">
+        <h1>ADMINISTRACION</h1>
+        <div class="block-pad btn-hover block-btn-yellow">
+            <a href="{% url 'huespedes_index' %}">Huespedes <i class="fa-solid fa-user-secret"></i></a>
+            
+        </div>
+        <div class="block-pad btn-hover block-btn-yellow">
+            <a href="{% url 'habitaciones_index' %}">Habitaciones <i class="fa-solid fa-people-roof"></i></a>
+        </div>
+        <div class="block-pad btn-hover block-btn-yellow">
+            <a href="{% url 'reserva_index' %}">reservas <i class="fa-sharp fa-regular fa-handshake"></i></a>
+        </div>
+    </div>
 </body>
 </html>
