@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva Habitacion</title>
+</head>
+<body>
+    <h1>Nueva Habitacion</h1>
+    <form action="{% url 'nuevo_habitacion' %}" method="post" name="Nhabitacion" id="Nhabitacion">
+        {% csrf_token %}
+        Numero: <input type="number" name="numero" max="100"><br>
+        Piso: <input type="number" name="piso" max="5"><br>
+        Tipo:<input type="text" name="tipo" max="20" default="Simple"><br>
+        Precio: <input type="number" name="precio"><br>
+        Estado: <input type="text" name="estado" max="20" default="Libre"><br>
+        <input type="submit" value="Guardar">
+        <input type="reset" name="Borrar">
+        <a href="{% url 'habitaciones_index' %}">Cancelar</a>
+    </form>
+</body>
+</html>

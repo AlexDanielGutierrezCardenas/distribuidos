@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Datos de los Habitaciones</h1>
+    <a href="{% url 'nuevo_habitacion' %}">Registro de nueva Habitacion</a><br>
+    <a href="{% url 'huespedes_index' %}">Huespedes</a><br>
+    <table width="90%" align="center" border="1">
+        <thead>
+            <tr>
+                <th>Nro.</th>
+                <th>Numero</th>
+                <th>Piso</th>
+                <th>Tipo</th>
+                <th>Precio</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for habitacion in habitaciones%}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{habitacion.numero}}</td>
+                <td>{{habitacion.piso}}</td>
+                <td>{{habitacion.tipo}}</td>
+                <td>{{habitacion.precio}}</td>
+                <td>{{habitacion.estado}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'index'%}">Atras</a>
+</body>
+</html>

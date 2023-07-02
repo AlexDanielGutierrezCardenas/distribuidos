@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva Reserva</title>
+</head>
+<body>
+    <h1>Nueva Reserva</h1>
+    <form action="{% url 'nueva_reserva' %}" method="post" name="Nreserva" id="Nreserva">
+        {% csrf_token %}
+        Fecha: <input type="date" name="fecha"><br>
+        Duracion: <input type="number" name="duracion"><br>
+        Estado: <input type="text" name="estado" max="50"><br>
+        Huesped: <input type="text" name="huesped" max="50"><br>
+        Habitacion: <input type="text" name="Habitacion" max="50"><br>
+        
+        <input type="submit" value="Guardar">
+        <input type="reset" name="Borrar">
+        <a href="{% url 'index_reserva' %}">Cancelar</a>
+    </form>
+</body>
+</html>

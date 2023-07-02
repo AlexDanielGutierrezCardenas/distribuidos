@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo Huesped</title>
+</head>
+<body>
+    <h1>Nuevo Huesped</h1>
+    <form action="{% url 'nuevo_huesped' %}" method="post" name="Nhuesped" id="Nhuesped">
+        {% csrf_token %}
+        Nombres: <input type="text" name="nombres" max="20" placeholder="Introduzca los nombres"><br>
+        CI: <input type="text" name="ci" max="10"><br>
+        Correo: <input type="email" name="email" max="50"><br>
+        Fecha de Nacimiento: <input type="date" name="fecha_nacimiento"><br>
+        Telefono: <input type="number" name="telefono"><br>
+        Procedencia: <input type="text" name="procedencia" max="50"><br>
+        <input type="submit" value="Guardar">
+        <input type="reset" name="Borrar">
+        <a href="{% url 'huespedes_index' %}">Cancelar</a>
+    </form>
+</body>
+</html>
