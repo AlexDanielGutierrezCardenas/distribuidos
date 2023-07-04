@@ -1,0 +1,53 @@
+body {
+    background-color: rgba(12, 12, 12, 90);
+  }
+  
+  table {
+    background: rgba(12, 20, 20, 30);
+    width: 30%;
+    margin: 0 auto;
+    margin-top: 2%;
+    border-collapse: collapse;
+    text-align: center;
+  }
+  
+  th {
+    background-color: rgba(5, 5, 5, 95);
+    height: 35px;
+    border-bottom: 1px solid rgb(50, 92, 219);
+    color: rgb(120, 120, 120);
+  }
+  
+  td {
+    color: rgba(100, 100, 100, 60);
+    height: 30px;
+  }
+  
+  tfoot {
+    font-weight: bold;
+  }
+  /*Selectores*/
+  
+  th:hover {
+    background-color: rgba(20, 20, 20, 90);
+  }
+  
+  tr:hover {
+    background-color: rgba(15, 25, 25, 90);
+  }
+  
+  .PrecioTotal:hover,
+  .CantidadTotal:hover {
+    color: rgb(230, 50, 50);
+  }
+  /* Estililos de clases*/
+  
+  .Cabecera {
+    background-color: rgb(15, 15, 15);
+    height: 30px;
+    padding: 2px;
+    padding: 1em 3em;
+    margin: 1em 25%;
+    text-align: center;
+    color: white;
+  }

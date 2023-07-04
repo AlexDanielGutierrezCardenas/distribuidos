@@ -55,7 +55,7 @@
       <div class="row gx-lg-5 align-items-center mb-5">
         <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
           <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
-            Registro de Reservas <br />
+            Actualizacion de Reservas <br />
             <span style="color: hsl(218, 81%, 75%)">for your business</span>
           </h1>
           <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
@@ -64,24 +64,24 @@
         </div>
   
         <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
-          <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-p"></div>
-          <div id="radius-shape-2" class="position-absolute shadow-5-p"></div>
+          <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+          <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
   
           <div class="card bg-glass">
             <div class="card-body px-4 py-5 px-md-5">
-                <form action="{% url 'nueva_reserva' %}" method="post" name="Nreserva" id="Nreserva">
+                <form action="{% url 'update_reserva' reserva.id reserva.huesped.id reserva.habitacion.id%}" method="post" name="Nreserva" id="Nreserva">
                 {% csrf_token %}
                 <!-- 2 column grid layout with text inputs for the first and last names -->
                 <div class="row">
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <input type="date" name="fecha" id="form3Example1" class="form-control" />
+                      <input type="date" name="fecha" id="form3Example1" class="form-control" value="{{reserva.fecha}}"/>
                       <label class="form-label" for="form3Example1">Fecha</label>
                     </div>
                   </div>
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <input type="number" name="duracion" id="form3Example2" class="form-control" />
+                      <input type="number" name="duracion" id="form3Example2" class="form-control" value="{{reserva.duracion}}"/>
                       <label class="form-label" for="form3Example2">Duracion</label>
                     </div>
                   </div>
@@ -89,37 +89,20 @@
   
                 <!-- Email input -->
                 <div class="form-outline mb-4">
-                    <select name="estado" id="form3Example3" class="form-control" >
-                        <option value="Activo" selected readonly>Activo</option>
-                    </select>
-                  <label class="form-label" for="form3Example3">Estado</label>
+                    <input readonly type="text" name="estado" id="form3Example4" class="form-control" value="{{reserva.estado}}">
+                    <label class="form-label" for="form3Example3">Estado</label>
                 </div>
   
                 <!-- Password input -->
                 <div class="form-outline mb-4">
-                    <select name="huesped" id="form3Example4" class="form-control">
-                        <option disabled selected>Huesped</option>
-                        {% for huesped in huespedes %}
-                            <option value="{{huesped.id}}">{{huesped.ci}} {{huesped.nombres}}</option>
-                        {% endfor %}
-                    </select>
-                  <label class="form-label" for="form3Example4">Huesped</label>
+                    <input readonly name="huesped" id="form3Example4" class="form-control" value="{{reserva.huesped}}">
+                    <label class="form-label" for="form3Example4">Huesped</label>
                 </div>
 
 
                 <div class="form-outline mb-4">
-                    <select name="habitacion" id="form3Example4" class="form-control">
-                        <option disabled selected>habitacion</option>
-                        {% for habitacion in habitaciones %}
-                          {% if habitacion.estado == "libre" %}
-                            <option value="{{habitacion.id}}">
-                                <p>PISO</p> {{habitacion.numero}}
-                                <p>HABITACION</p> {{habitacion.tipo}}
-                                <p>ESTADO</p> {{habitacion.estado}}</option>
-                          {% endif %}
-                        {% endfor %}
-                    </select>
-                  <label class="form-label" for="form3Example4">Huesped</label>
+                    <input readonly name="habitacion" id="form3Example4" class="form-control" value="{{reserva.habitacion}}">
+                    <label class="form-label" for="form3Example4">Habitacion</label>
                 </div>
   
                 

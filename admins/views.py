@@ -10,7 +10,8 @@ def huesped(request):
 
 def habitacion(request):
     habitaciones = Habitacion.objects.all()
-    return render(request,'habitaciones/index.html', {'habitaciones':habitaciones})
+    habita = Habitacion.objects.filter(estado='libre')
+    return render(request,'habitaciones/index.html', {'habitaciones':habitaciones,'habita':habita})
 
 def nuevo_habitacion(request):
     if request.method == 'GET':
@@ -42,4 +43,46 @@ def nuevo_huesped(request):
         )
         huesped.save()
     return redirect('huespedes_index')
-# Create your views here.
+
+
+def eliminarHuesped(request,id):
+    huesped=Huesped.objects.get(pk=id)
+    huesped.delete()
+    return redirect('huespedes_index')
+
+def editar(request, id):
+    huesped=Huesped.objects.get(pk=id)
+    # return HttpResponse(persona)
+    return render(request,'huespedes/editar.html',{'huesped':huesped})
+
+def update_huesped(request,id):
+    datos=request.POST
+    huesped=Huesped.objects.get(pk=id)
+    huesped.nombres=datos.get('nombres')
+    huesped.ci=datos.get('ci')
+    huesped.correo=datos.get('correo')
+    huesped.telefono=datos.get('telefono')
+    huesped.procedencia=datos.get('procedencia')
+    huesped.save()
+    return redirect('huespedes_index')
+
+def eliminarHabitacion(request,id):
+    habitacion=Habitacion.objects.get(pk=id)
+    habitacion.delete()
+    return redirect('habitaciones_index')   
+
+def editarHabitacion(request, id):
+    habitacion=Habitacion.objects.get(pk=id)
+    # return HttpResponse(persona)
+    return render(request,'habitaciones/editar.html',{'habitacion':habitacion})
+
+def update_habitacion(request,id):
+    datos=request.POST
+    habitacion=Habitacion.objects.get(pk=id)
+    habitacion.numero=datos.get('numero')
+    habitacion.piso=datos.get('piso')
+    habitacion.tipo=datos.get('tipo')
+    habitacion.precio=datos.get('precio')
+    habitacion.estado=datos.get('estado')
+    habitacion.save()
+    return redirect('habitaciones_index')

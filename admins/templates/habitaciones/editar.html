@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
-    <title>Nueva Habitacion</title>
+    <title>Actualizar habitacion</title>
 </head>
 <body>
 
@@ -36,21 +36,22 @@
               backdrop-filter: blur(30px);
               ">
             <div class="card-body p-5 shadow-5 text-center">
-              <h2 class="fw-bold mb-5">Nueva Habitacion</h2>
-              <form action="{% url 'nuevo_habitacion' %}" method="post" name="Nhabitacion" id="Nhabitacion">
+              <h2 class="fw-bold mb-5">Actualizar Habitacion</h2>
+              <h3>piso:{{habitacion.piso}} numero: {{habitacion.numero}}</h3>
+              <form action="{% url 'update_habitacion' habitacion.id%}" method="post" name="Nhabitacion" id="Nhabitacion">
                 {% csrf_token %}
                 <!-- 2 column grid layout with text inputs for the first and last names -->
                 <div class="row">
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                        <input type="number"  class="form-control" name="numero"  placeholder="Introduzca el numero de la Habitacion">            
+                        <input readonly type="number" value="{{habitacion.numero}}" class="form-control" name="numero"  placeholder="Introduzca el numero de la Habitacion">            
                         <label for="number" class="form-label">Numero:</label>
                     </div>
                   </div>
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
                         
-                        <input type="number"  class="form-control" name="piso"  placeholder="Indique el piso de la habitacion">
+                        <input readonly type="number" value="{{habitacion.piso}}" class="form-control" name="piso"  placeholder="Indique el piso de la habitacion">
                         <label for="number" class="form-label">Piso:</label>
                     </div>
                   </div>
@@ -58,14 +59,12 @@
                 <div class="row">
                     <div class="col-md-6 mb-4">
                         <div class="form-outline">
-                            
-                            <input type="text"  class="form-control" name="tipo" placeholder="Indique el tipo de la habitacion">
+                            <input readonly value="{{habitacion.tipo}}"type="text"  class="form-control" name="tipo" placeholder="Indique el tipo de la habitacion">
                             <label for="text" class="form-label">Tipo:</label>
                         </div>
                     </div>
                     <div class="col-md-6 mb-4">
                         <div class="form-outline">    
-                            
                             <input type="number"  class="form-control" name="precio" placeholder="Precio de la Habitacion">
                             <label for="number" class="form-label">Precio:</label>
                         </div>
@@ -75,7 +74,7 @@
                 <!-- Email input -->
                 <div class="form-outline mb-4">
                     <label for="text" class="form-label">Estado:</label>
-                    <input type="text"  class="form-control" name="estado" placeholder="Estado de la habotacion">        
+                    <input  readonly value="{{habitacion.estado}}" type="text"  class="form-control" name="estado" placeholder="Estado de la habotacion">        
                 </div>
   
                 <!-- Submit button -->

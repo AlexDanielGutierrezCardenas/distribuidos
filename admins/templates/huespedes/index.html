@@ -1,16 +1,31 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
-    <h1>Datos de los Huespedes</h1>
-    <a href="{% url 'nuevo_huesped' %}">Registro de un nuevo huesped</a><br>
-    <a href="{% url 'habitaciones_index' %}">Habitaciones</a><br>
-    <table width="90%" align="center" border="1">
-        <thead>
+    <div class="Cabecera">
+        <h1>Datos de los Huespedes</h1>
+    </div>
+
+    <ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active rounded-5" id="home-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="true"><a class="nav-link active" href="{% url 'index'%}">Atras</a></button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link rounded-5" id="profile-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false"><a class="nav-link active" href="{% url 'nuevo_huesped' %}">Registro de un nuevo huesped</a></button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link rounded-5" id="contact-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false"><a class="nav-link active" href="{% url 'habitaciones_index' %}">Habitaciones</a></button>
+    </li>
+    </ul>
+    
+    <table class="table table-dark">
+        <thead class="table-light">
             <tr>
                 <th>Nro.</th>
                 <th>Nombres</th>
@@ -19,6 +34,7 @@
                 <th>Fecha de Nacimiento</th>
                 <th>Telefono</th>
                 <th>Procedencia</th>
+                <th>Opciones</th>
             </tr>
         </thead>
         <tbody>
@@ -28,13 +44,18 @@
                 <td>{{huesped.nombres}}</td>
                 <td>{{huesped.ci}}</td>
                 <td>{{huesped.email}}</td>
-                <td>{{huesped.fecha_nacimiento}}</td>
+                <td>{{huesped.fecha_nacimiento | date:"m/d/y"}}</td>
                 <td>{{huesped.telefono}}</td>
                 <td>{{huesped.procedencia}}</td>
+                <td>
+                    <button class="btn btn-danger"><a style="text-decoration: none; color:black;" href="{% url 'eliminar_huesped' huesped.id%}">eliminar</a></button>
+                    <button class="btn btn-primary"><a style="text-decoration: none; color:black;" href="{% url 'editar_huesped' huesped.id%}">editar</a></button>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-    <a href="{% url 'index'%}">Atras</a>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 </html>
